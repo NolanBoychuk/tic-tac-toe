@@ -40,11 +40,18 @@ const gameBoard = (function(){
                 updateModal();
                 theDialog.showModal();
             }
+        else if(step === 10){
+            updateModal();
+            theDialog.showModal();
+        }
     }
 
     function updateModal(){
         theDialog.classList.add("dialogPanel")
-        if(step % 2 !== 0){
+        if(step === 10){
+            dialogText.textContent = "Draw";
+        }
+        else if(step % 2 !== 0){
             dialogText.textContent = `${player2Nombre} wins`;
         }
         else{
