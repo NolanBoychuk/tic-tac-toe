@@ -1,0 +1,43 @@
+#boardContainer {
+    width:600px;
+    height:600px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.boardSquares {
+    font-size:150px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:200px;
+    width:200px;
+}
+#square1, #square2, #square3, #square4, #square5, #square6 {
+    border-bottom:solid 5px black;
+}
+#square1, #square2, #square4, #square5, #square7, #square8 {
+    border-right:solid 5px black;
+}
+body {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:50px;
+}
+#topContainer {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+dialog[open] {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:20px;
+    align-items:center;
+}
+#buttonDiv {
+    margin-top:-30px;
+    margin-bottom:-30px;
+}
