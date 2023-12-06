@@ -2,6 +2,8 @@ const gameBoard = (function(){
     let player1Nombre = "Player 1";
     let player2Nombre = "Player 2";
 
+    let won = false;
+
     let player1Input = document.querySelector("#player1Input")
     let player2Input = document.querySelector("#player2Input")
 
@@ -17,7 +19,8 @@ const gameBoard = (function(){
             list[6] === list[7] && list[7] === list[8] || list[0] === list[3] && list[3] === list[6] || 
             list[1] === list[4] && list[4] === list[7] || list[2] === list[5] && list[5] === list[8] ||
             list[0] === list[4] && list[4] === list[8] || list[6] === list[4] && list[4] === list[2])
-            {
+            {   
+                won = true;
                 gameFlow.updateModal();
                 theDialog.showModal();
             }
@@ -25,6 +28,7 @@ const gameBoard = (function(){
             gameFlow.updateModal();
             theDialog.showModal();
         }
+        won = false;
     }
 
     function populateBoard(list, square){
@@ -39,7 +43,11 @@ const gameBoard = (function(){
             square.textContent = 'O';
         }
         }
-    return {startButton, player1Input, player2Input, buttonDiv, theDialog, dialogText, player1Nombre, player2Nombre, populateBoard, gameOver}
+    
+    function getWon(){
+        return won;
+    }
+    return {startButton, player1Input, player2Input, buttonDiv, theDialog, dialogText, player1Nombre, player2Nombre, populateBoard, gameOver, getWon}
 })();
 
 const gameFlow = function(){
@@ -123,7 +131,7 @@ const gameFlow = function(){
 
     function updateModal(){
         gameBoard.theDialog.classList.add("dialogPanel")
-        if(step === 10){
+        if(step === 10 && gameBoard.getWon() === false){
             gameBoard.dialogText.textContent = "Draw";
         }
         else if(step % 2 !== 0){
